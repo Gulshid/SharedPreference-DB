@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preference/Services_/Shared_Preference.dart';
-import 'package:shared_preference/ViewModel/StoreProvider.dart';
-import 'package:shared_preference/ViewModel/getProvider.dart';
+import 'package:shared_preference/ViewModel/SharedProvider.dart';
 import 'package:shared_preference/view_/Home_view.dart';
 
 
-void main() async{
-  WidgetsFlutterBinding.ensureInitialized();
-  await Helper.initSharedPreferences();
+void main() {
+
   runApp(const MyApp());
 }
 
@@ -25,8 +22,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MultiProvider(
           providers: [
-            ChangeNotifierProvider(create:(_)=> StoreProvider()),
-            ChangeNotifierProvider(create:(_)=> Getprovider()),
+            ChangeNotifierProvider(create:(_)=> Sharedprovider()),
           ],
 
           child: Builder(
@@ -43,7 +39,7 @@ class MyApp extends StatelessWidget {
                     fontSizeFactor: 1.sp,
                   ),
                 ),
-              home: HomeView(),
+              home: homeView(),
         
                 // initialRoute: Routesname.authView,
                 // onGenerateRoute: Routes.generateRoute,
